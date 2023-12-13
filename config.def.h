@@ -1,9 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
+static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
@@ -77,6 +77,7 @@ static const char *keyboardLightDownCmd[] = { "brightnessctl", "-d", "tpacpi:kbg
 
 static const char *lockCmd[] = { "slock", NULL };
 static const char *changeBgRandomCmd[] = { "nitrogen", "--random", "--set-zoom-fill", NULL };
+static const char *screenshotCmd[] = { "flameshot", "gui", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -130,7 +131,8 @@ static const Key keys[] = {
 	//{ ShiftMask,                    0x1008ff03,  spawn,     {.v = keyboardLightDownCmd } }, // decrease brightness key + shift TODO
 
 	{ MODKEY,                       XK_l,      spawn,          {.v = lockCmd } }, // locks screen
-	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = changeBgRandomCmd } }, // locks screen
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = changeBgRandomCmd } }, // change random background for the current screen
+  { MODKEY|ControlMask,           XK_d,      spawn,          {.v = screenshotCmd } }, // screenshot
 };
 
 /* button definitions */

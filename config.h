@@ -130,7 +130,7 @@ static const Key keys[] = {
 	//{ ShiftMask,                    0x1008ff02,  spawn,     {.v = keyboardLightUpCmd } }, // increase brightness key + shift TODO
 	//{ ShiftMask,                    0x1008ff03,  spawn,     {.v = keyboardLightDownCmd } }, // decrease brightness key + shift TODO
 
-	{ MODKEY,                       XK_l,      spawn,          {.v = lockCmd } }, // locks screen
+	{ MODKEY,                       XK_z,      spawn,          {.v = lockCmd } }, // locks screen
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = changeBgRandomCmd } }, // change random background for the current screen
   { MODKEY|ControlMask,           XK_d,      spawn,          {.v = screenshotCmd } }, // screenshot
 };

@@ -40,8 +40,8 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+  //{ "><>",      NULL },    [> no layout function means floating behavior <]
+	//{ "[M]",      monocle },
 };
 
 /* key definitions */
@@ -131,7 +131,7 @@ static const Key keys[] = {
 	//{ ShiftMask,                    0x1008ff03,  spawn,     {.v = keyboardLightDownCmd } }, // decrease brightness key + shift TODO
 
 	{ MODKEY,                       XK_z,      spawn,          {.v = lockCmd } }, // locks screen
-	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = changeBgRandomCmd } }, // change random background for the current screen
+	{ MODKEY|ControlMask,           XK_r,      spawn,          {.v = changeBgRandomCmd } }, // change random background for the current screen
   { MODKEY|ControlMask,           XK_d,      spawn,          {.v = screenshotCmd } }, // screenshot
 };
 

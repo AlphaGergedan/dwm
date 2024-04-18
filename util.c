@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "util.h"
 
@@ -33,4 +34,21 @@ ecalloc(size_t nmemb, size_t size)
 	if (!(p = calloc(nmemb, size)))
 		die("calloc:");
 	return p;
+}
+
+void
+logmsg(const char *message)
+{
+  FILE *fptr;
+  fptr = fopen("/home/gergedan/repos/github/dwm/log", "a");
+  fprintf(fptr, "%s", message);
+  fclose(fptr);
+}
+
+char*
+timestamp()
+{
+  time_t ltime;
+  ltime = time(NULL);
+  return asctime(localtime(&ltime));
 }

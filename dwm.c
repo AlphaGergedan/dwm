@@ -826,6 +826,10 @@ focusin(XEvent *e)
 void
 focusmon(const Arg *arg)
 {
+  char msg[128];
+  sprintf(msg, "%s-> %s%d%s%d%s%d\n", timestamp(), "Enter focusmon. Num=", selmon->num, ", nnmaster=", selmon->nmaster, ", by=", selmon->by);
+  logmsg(msg);
+
 	Monitor *m;
 
 	if (!mons->next)
@@ -1018,6 +1022,10 @@ keypress(XEvent *e)
 void
 killclient(const Arg *arg)
 {
+  char msg[128];
+  sprintf(msg, "%s->%s\n", timestamp(), "Gracefully killing DWM session.");
+  logmsg(msg);
+
 	if (!selmon->sel)
 		return;
 	if (!sendevent(selmon->sel, wmatom[WMDelete])) {
@@ -1681,8 +1689,12 @@ spawn(const Arg *arg)
 {
 	struct sigaction sa;
 
-	if (arg->v == dmenucmd)
-		dmenumon[0] = '0' + selmon->num;
+  if (arg->v == changeBgRandomCmd) {
+    sprintf(changeBgRandomCmdMon, "--head=%d", selmon->num);
+  }
+  else if (arg->v == dmenucmd) {
+    dmenumon[0] = '0' + selmon->num;
+  }
 	if (fork() == 0) {
 		if (dpy)
 			close(ConnectionNumber(dpy));
@@ -2197,6 +2209,10 @@ zoom(const Arg *arg)
 int
 main(int argc, char *argv[])
 {
+  char msg[128];
+  sprintf(msg, "%s-> %s\n", timestamp(), "DWM session started.");
+  logmsg(msg);
+
 	if (argc == 2 && !strcmp("-v", argv[1]))
 		die("dwm-"VERSION);
 	else if (argc != 1)

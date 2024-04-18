@@ -76,7 +76,11 @@ static const char *keyboardLightUpCmd[] = { "brightnessctl", "-d", "tpacpi:kbg_b
 static const char *keyboardLightDownCmd[] = { "brightnessctl", "-d", "tpacpi:kbg_backlight", "set", "1-", NULL };
 
 static const char *lockCmd[] = { "slock", NULL };
-static const char *changeBgRandomCmd[] = { "nitrogen", "--random", "--set-zoom-fill", NULL };
+
+// the head is manipulated in spawn(), similar to dmenucmd
+static char changeBgRandomCmdMon[16] = "--head=0"; /* component of dmenucmd, manipulated in spawn(), represents --head=0 */
+static const char *changeBgRandomCmd[] = { "nitrogen", "--random", "--set-zoom-fill", changeBgRandomCmdMon, "--save", NULL };
+
 static const char *screenshotCmd[] = { "flameshot", "gui", NULL };
 
 static const Key keys[] = {

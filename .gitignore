@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 log
+=======
+*.o
+log
+dwm
+>>>>>>> ec871dc (add log and bin to the gitignore)
